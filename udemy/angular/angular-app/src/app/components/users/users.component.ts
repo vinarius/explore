@@ -26,7 +26,8 @@ export class UsersComponent implements OnInit {
               street: '50 Main St',
               city: 'Boston',
               state: 'MA'
-          }
+          },
+          image: "https://picsum.photos/600/?random?image=0"
         },
         {
           firstName: 'Karen',
@@ -36,7 +37,8 @@ export class UsersComponent implements OnInit {
               street: '42 Jackson St',
               city: 'Miami',
               state: 'FL'
-          }
+          },
+          image: "https://picsum.photos/600/?random?image=1"
         },
         {
           firstName: 'Doug',
@@ -46,7 +48,8 @@ export class UsersComponent implements OnInit {
               street: '750 Northbrook Ln',
               city: 'Austin',
               state: 'TX'
-          }
+          },
+          image: "https://picsum.photos/600/?random?image=2"
         }
       ];
 
@@ -54,7 +57,7 @@ export class UsersComponent implements OnInit {
     }, 2000);
     
 
-    this.showExtended = false;
+    this.showExtended = true;
     
   }
 

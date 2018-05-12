@@ -24,7 +24,8 @@ export class UserComponent {
                 street: '50 Main St',
                 city: 'Boston',
                 state: 'MA'
-            } 
+            },
+            image: ''
         }
     }
 }
