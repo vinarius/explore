@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = false;
+  enableAdd: boolean = true;
 
   constructor() { }
 
@@ -27,7 +28,9 @@ export class UsersComponent implements OnInit {
               city: 'Boston',
               state: 'MA'
           },
-          image: "https://picsum.photos/600/?random?image=0"
+          image: "https://picsum.photos/200/?random?image=0",
+          isActive: true,
+          registered: new Date('01/02/2018 08:30:00')
         },
         {
           firstName: 'Karen',
@@ -38,7 +41,9 @@ export class UsersComponent implements OnInit {
               city: 'Miami',
               state: 'FL'
           },
-          image: "https://picsum.photos/600/?random?image=1"
+          image: "https://picsum.photos/200/?random?image=1",
+          isActive: false,
+          registered: new Date('03/11/2017 06:20:00')
         },
         {
           firstName: 'Doug',
@@ -49,16 +54,19 @@ export class UsersComponent implements OnInit {
               city: 'Austin',
               state: 'TX'
           },
-          image: "https://picsum.photos/600/?random?image=2"
+          image: "https://picsum.photos/200/?random?image=2",
+          isActive: true,
+          registered: new Date('11/02/2016 05:20:00')
         }
       ];
 
       this.loaded = true;
     }, 2000);
     
+  } // end of ngOnInit()
 
-    this.showExtended = true;
-    
+  addUser(user: User){
+    this.users.push(user);
   }
 
 }
