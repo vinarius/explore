@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   showExtended: boolean = true;
   loaded: boolean = false;
   enableAdd: boolean = true;
+  showUserForm: boolean = false;
 
   constructor() { }
 
@@ -30,7 +31,8 @@ export class UsersComponent implements OnInit {
           },
           image: "https://picsum.photos/200/?random?image=0",
           isActive: true,
-          registered: new Date('01/02/2018 08:30:00')
+          registered: new Date('01/02/2018 08:30:00'),
+          hide: true
         },
         {
           firstName: 'Karen',
@@ -43,7 +45,8 @@ export class UsersComponent implements OnInit {
           },
           image: "https://picsum.photos/200/?random?image=1",
           isActive: false,
-          registered: new Date('03/11/2017 06:20:00')
+          registered: new Date('03/11/2017 06:20:00'),
+          hide: true
         },
         {
           firstName: 'Doug',
@@ -56,17 +59,27 @@ export class UsersComponent implements OnInit {
           },
           image: "https://picsum.photos/200/?random?image=2",
           isActive: true,
-          registered: new Date('11/02/2016 05:20:00')
+          registered: new Date('11/02/2016 05:20:00'),
+          hide: true
         }
       ];
 
       this.loaded = true;
-    }, 2000);
+    }, 1500);
     
   } // end of ngOnInit()
 
   addUser(user: User){
     this.users.push(user);
+  }
+
+  toggleHide(user: User){
+    user.hide = !user.hide;
+  }
+
+  onSubmit(e){
+    e.preventDefault();
+    console.log('onSubmit() fired');
   }
 
 }

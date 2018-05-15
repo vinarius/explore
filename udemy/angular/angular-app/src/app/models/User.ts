@@ -9,5 +9,6 @@ export interface User {
     },
     image?: string,
     isActive?: boolean,
-    registered?: any
+    registered?: any,
+    hide?: boolean
 }
