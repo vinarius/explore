@@ -80,6 +80,7 @@ export class UsersComponent implements OnInit {
   onSubmit(e){
     e.preventDefault();
     console.log('onSubmit() fired');
+    console.log(e);
   }
 
 }
