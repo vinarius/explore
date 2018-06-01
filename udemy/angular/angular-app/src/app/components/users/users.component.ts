@@ -24,12 +24,7 @@ export class UsersComponent implements OnInit {
           firstName: 'John',
           lastName: 'Doe',
           age: 24,
-          address: {
-              street: '50 Main St',
-              city: 'Boston',
-              state: 'MA'
-          },
-          image: "https://picsum.photos/200/?random?image=0",
+          email: '',
           isActive: true,
           registered: new Date('01/02/2018 08:30:00'),
           hide: true
@@ -38,12 +33,7 @@ export class UsersComponent implements OnInit {
           firstName: 'Karen',
           lastName: 'Williams',
           age: 30,
-          address: {
-              street: '42 Jackson St',
-              city: 'Miami',
-              state: 'FL'
-          },
-          image: "https://picsum.photos/200/?random?image=1",
+          email: '',
           isActive: false,
           registered: new Date('03/11/2017 06:20:00'),
           hide: true
@@ -52,12 +42,7 @@ export class UsersComponent implements OnInit {
           firstName: 'Doug',
           lastName: 'Smith',
           age: 42,
-          address: {
-              street: '750 Northbrook Ln',
-              city: 'Austin',
-              state: 'TX'
-          },
-          image: "https://picsum.photos/200/?random?image=2",
+          email: '',
           isActive: true,
           registered: new Date('11/02/2016 05:20:00'),
           hide: true
