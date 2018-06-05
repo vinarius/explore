@@ -9,9 +9,14 @@ import { User } from '../../models/User';
 })
 export class UsersComponent implements OnInit {
   users: User[];
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
   showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
   showUserForm: boolean = false;
 
   constructor() { }
@@ -54,8 +59,10 @@ export class UsersComponent implements OnInit {
     
   } // end of ngOnInit()
 
-  addUser(user: User){
-    this.users.push(user);
+  addUser(){
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    this.users.unshift(this.user);
   }
 
   toggleHide(user: User){
@@ -63,9 +70,9 @@ export class UsersComponent implements OnInit {
   }
 
   onSubmit(e){
-    e.preventDefault();
     console.log('onSubmit() fired');
     console.log(e);
+    this.addUser();
   }
 
 }
