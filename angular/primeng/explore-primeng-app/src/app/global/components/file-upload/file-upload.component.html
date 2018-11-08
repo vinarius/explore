@@ -1,0 +1,10 @@
+<p-fileUpload
+name="myfile[]"
+customUpload="true"
+[files]="externalFiles"
+#uploader
+[multiple]="false"
+auto="true"
+(uploadHandler)="myUploader($event)"
+>
+</p-fileUpload>
