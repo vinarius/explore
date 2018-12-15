@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
-import { User } from '../../models/User';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/User'; 
 
 @Component({
   selector: 'app-users',
@@ -8,71 +8,46 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users: User[];
   user: User = {
     firstName: '',
     lastName: '',
     email: ''
-  };
+  }
+  users: User[];
   showExtended: boolean = true;
   loaded: boolean = false;
   enableAdd: boolean = false;
   showUserForm: boolean = false;
+  @ViewChild('userForm') form: any;
+  data: any;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+      this.userService.getData().subscribe(data => {
+        console.log(data);
+      });
+   
+      this.userService.getUsers().subscribe(users => {
+        this.users = users;
+        this.loaded = true;
+      });
 
-    setTimeout(()=>{
-      this.users = [
-        {
-          firstName: 'John',
-          lastName: 'Doe',
-          age: 24,
-          email: '',
-          isActive: true,
-          registered: new Date('01/02/2018 08:30:00'),
-          hide: true
-        },
-        {
-          firstName: 'Karen',
-          lastName: 'Williams',
-          age: 30,
-          email: '',
-          isActive: false,
-          registered: new Date('03/11/2017 06:20:00'),
-          hide: true
-        },
-        {
-          firstName: 'Doug',
-          lastName: 'Smith',
-          age: 42,
-          email: '',
-          isActive: true,
-          registered: new Date('11/02/2016 05:20:00'),
-          hide: true
-        }
-      ];
-
-      this.loaded = true;
-    }, 1500);
-    
-  } // end of ngOnInit()
-
-  addUser(){
-    this.user.isActive = true;
-    this.user.registered = new Date();
-    this.users.unshift(this.user);
   }
 
-  toggleHide(user: User){
-    user.hide = !user.hide;
+  onSubmit({value, valid}: {value: User, valid: boolean}) {
+    if(!valid){
+      console.log('Form is not valid');
+    } else {
+      value.isActive = true;
+      value.registered = new Date();
+      value.hide = true;
+
+      this.userService.addUser(value);
+
+      this.form.reset();
+    }
   }
 
-  onSubmit(e){
-    console.log('onSubmit() fired');
-    console.log(e);
-    this.addUser();
-  }
-
+  
 }
