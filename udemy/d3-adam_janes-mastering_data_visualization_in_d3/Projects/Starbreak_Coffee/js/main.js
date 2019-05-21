@@ -75,7 +75,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             .attr('transform', `translate(0, ${height})`)
             .call(bottomAxisCall);
 
-
         const rects = chart.selectAll('rect')
             .data(data);
 
