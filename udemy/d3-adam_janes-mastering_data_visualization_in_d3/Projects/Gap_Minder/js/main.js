@@ -1,9 +1,3 @@
-/*
- *    main.js
- *    Mastering Data Visualization with D3.js
- *    Project 2 - Gapminder Clone
- */
-
 window.addEventListener('DOMContentLoaded', (window_event) => {
 
 	const margin = {
@@ -35,15 +29,18 @@ window.addEventListener('DOMContentLoaded', (window_event) => {
 			});
 		}
 
-		console.log('Data after filtering out null values:\n', data);
+		console.log('Formatted data:\n', data);
+
+		let time = 0;
 
 		const g = d3.select('#chart-area')
 			.append('svg')
-				.attr('height', height + margin.top + margin.bottom)
-				.attr('width', width + margin.right + margin.left)
+			.attr('height', height + margin.top + margin.bottom)
+			.attr('width', width + margin.right + margin.left)
 			.append('g')
-				.attr('transform', `translate(${margin.left}, ${margin.top})`);
+			.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
+		// Scales
 		const x = d3.scaleLog()
 			.base(10)
 			.domain([300, 150000])
@@ -53,19 +50,40 @@ window.addEventListener('DOMContentLoaded', (window_event) => {
 			.domain([0, 90])
 			.range([height, 0]);
 
+		const continentColor = d3.scaleOrdinal(d3.schemePastel1);
+
+		// X axis
 		const bottomAxis = d3.axisBottom(x)
-			.tickValues([400, 4000, 40000]);
-
-		const leftAxis = d3.axisLeft(y);
-
+			.tickValues([400, 4000, 40000])
+			.tickFormat(d3.format('$'));
 		g.append('g')
 			.attr('class', 'axis-bottom')
 			.attr('transform', `translate(0, ${height})`)
 			.call(bottomAxis);
 
+		// Y axis
+		const leftAxis = d3.axisLeft(y);
 		g.append('g')
 			.attr('class', 'axis-left')
 			.call(leftAxis);
+		
+
+		g.selectAll('circle')
+			.data(data[0].countries)
+			.enter()
+				.append('circle')
+				.attr('cx', (d)=>{
+					return x(d.income);
+				})
+				.attr('cy', (d)=>{
+					return y(d.life_exp);
+				})
+				.attr('r', 25)
+				.attr('fill', (d)=>{
+					return continentColor(d.continent);
+				});
+
+
 
 
 	});
