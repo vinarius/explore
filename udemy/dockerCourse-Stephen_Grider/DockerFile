@@ -1,0 +1,14 @@
+# create comments using #
+
+# Specify a base image
+FROM node:alpine
+
+# Install dependencies
+COPY package.json .
+RUN npm install
+
+# Copy all other files
+COPY . .
+
+# Default Command
+CMD ["npm", "start"]
