@@ -1,0 +1,15 @@
+.margin-right-half {
+    margin-right: 0.5rem;
+}
+
+.release-button {
+    height: 1.5rem;
+    align-self: center;
+}
+
+.container {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
