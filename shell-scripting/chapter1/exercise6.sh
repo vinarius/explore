@@ -8,7 +8,15 @@ read -p "Name of file or directory:" foo
 
 if [ -e "${foo}" ]
 then
-    echo "it exists"
+    if [ -f "${foo}" ]
+    then
+        echo "it exists and is a regular file"
+    elif [ -d "${foo}" ]
+    then
+        echo "this is a directory"
+    else
+        echo "it is another type of file"
+    fi
 else
-    echo "it does not exist"
+    echo "this file does not exist"
 fi
