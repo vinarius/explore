@@ -1,0 +1,1 @@
+AWS_PROFILE=vf-team7 cdk deploy
