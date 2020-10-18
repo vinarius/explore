@@ -4,23 +4,23 @@ const imTired = [];
 function helpLydia(times) {
     for (let i=0; i<times; i++) {
       const arr = [
+        'Free',
         'Get active in an unusual place',
         '20+ minutes cardio',
         'Try a protein drink & share your favorite shake recipe',
-        '30+ minutes resistance training',
+        'Find health/fitness article & share a summary',
         '"15,000 steps"',
-        '30+ minutes resistance training',
         '25+ minute walk',
         '15 minute core strength workout',
         'Three home cooked healthy meals',
-        'Time your best plank',
+        'Make a healthy breakfast',
         'Yoga routine',
-        '',
         '15 minute HIIT circuit',
         'Max tricep dips',
         '30+ minutes resistance training',
-        'Max push ups',
         '30+ minutes resistance training',
+        '30+ minutes resistance training',
+        'No added sugar for the day',
         'Eat a healthy salad',
         'Log your water intake (aim for 100+ oz)',
         '30+ minutes cardio',
@@ -28,7 +28,7 @@ function helpLydia(times) {
         '"10,000 steps"',
         '45+ minutes resistance training',
         'No processed foods',
-        '"Go out of your way to get extra exercise (take stairs, park in back of lot, etc.)"'
+        'Track your calories'
       ];
   
       const activities = [];
@@ -42,10 +42,10 @@ function helpLydia(times) {
       randomize(arr);
 
       const middleSpot = Math.floor(activities.length / 2);
-      const index = activities.indexOf('');
+      const index = activities.indexOf('Free');
       if(index !== middleSpot) {
           const value = activities[middleSpot];
-          activities[middleSpot] = '';
+          activities[middleSpot] = 'Free';
           activities[index] = value;
       }
 
@@ -60,6 +60,6 @@ function helpLydia(times) {
     }
   }
   
-  helpLydia(20);
+  helpLydia(10);
 
   fs.writeFileSync('fall_fitness_data.csv', imTired, 'utf-8');
