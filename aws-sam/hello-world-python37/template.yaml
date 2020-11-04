@@ -50,7 +50,7 @@ Resources:
           - - !Ref AWS::StackName
             - '-lambdaLayer'
       Description: Boto3 1.16.10.
-      ContentUri: ./python.zip
+      ContentUri: ./package
       CompatibleRuntimes:
         - python3.7
       

@@ -12,7 +12,7 @@ pip install --target ../package -r requirements.txt
 
 cd ..
 
-py zip-dependencies.py
+# py zip-dependencies.py
 
 sam.cmd deploy \
 --stack-name "${CLIENT}-${APPLICATION}-${ENVIRONMENT}" \
